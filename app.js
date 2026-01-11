@@ -62,7 +62,7 @@ dimensionSelect.addEventListener('change', updatePreview);
 
 async function generatePDF() {
     if (!uploadedImage || !imageElement) {
-        alert('Please upload an image first.');
+        alert('Please select an image first.');
         return;
     }
     

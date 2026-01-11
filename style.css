@@ -33,8 +33,16 @@ h1 {
 .subtitle {
     color: #666;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-size: 1.1em;
+}
+
+.privacy-notice {
+    color: #4caf50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 0.9em;
+    font-weight: 500;
 }
 
 .form-section {
