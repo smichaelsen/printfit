@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintFit - Print Images at Exact Size</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PrintFit</h1>
+        <p class="subtitle">Print your images at the exact size you need</p>
+        
+        <div class="form-section">
+            <div class="form-group">
+                <label for="imageUpload">Upload Image:</label>
+                <input type="file" id="imageUpload" accept="image/*" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="size">Size (cm):</label>
+                <input type="number" id="size" min="1" max="100" step="0.1" value="10" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="dimension">Dimension:</label>
+                <select id="dimension">
+                    <option value="width">Width</option>
+                    <option value="height">Height</option>
+                </select>
+            </div>
+            
+            <button id="generateBtn" class="generate-btn">Generate PDF</button>
+        </div>
+        
+        <div id="preview" class="preview-section" style="display: none;">
+            <h3>Preview</h3>
+            <div class="preview-info">
+                <p id="previewDimensions"></p>
+            </div>
+            <img id="previewImage" alt="Preview">
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
