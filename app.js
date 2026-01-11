@@ -90,18 +90,26 @@ async function generatePDF() {
         const widthMm = finalWidthCm * 10;
         const heightMm = finalHeightCm * 10;
         
-        const margin = 10;
-        const pageWidth = widthMm + (margin * 2);
-        const pageHeight = heightMm + (margin * 2);
+        // A4 dimensions: 210mm x 297mm
+        const a4Width = 210;
+        const a4Height = 297;
+        
+        const orientation = widthMm > heightMm ? 'landscape' : 'portrait';
+        const pageWidth = orientation === 'landscape' ? a4Height : a4Width;
+        const pageHeight = orientation === 'landscape' ? a4Width : a4Height;
+        
+        // Center the image on the page
+        const x = (pageWidth - widthMm) / 2;
+        const y = (pageHeight - heightMm) / 2;
         
         const { jsPDF } = window.jspdf;
         const pdf = new jsPDF({
-            orientation: pageWidth > pageHeight ? 'landscape' : 'portrait',
+            orientation: orientation,
             unit: 'mm',
-            format: [pageWidth, pageHeight]
+            format: 'a4'
         });
         
-        pdf.addImage(uploadedImage, 'JPEG', margin, margin, widthMm, heightMm);
+        pdf.addImage(uploadedImage, 'JPEG', x, y, widthMm, heightMm);
         
         pdf.save(`printfit-${finalWidthCm.toFixed(1)}x${finalHeightCm.toFixed(1)}cm.pdf`);
         
