@@ -98,9 +98,10 @@ async function generatePDF() {
         const pageWidth = orientation === 'landscape' ? a4Height : a4Width;
         const pageHeight = orientation === 'landscape' ? a4Width : a4Height;
         
-        // Center the image on the page
-        const x = (pageWidth - widthMm) / 2;
-        const y = (pageHeight - heightMm) / 2;
+        // Place image at top-left with safety margin
+        const margin = 5;
+        const x = margin;
+        const y = margin;
         
         const { jsPDF } = window.jspdf;
         const pdf = new jsPDF({
